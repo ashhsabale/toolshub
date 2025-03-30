@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checker Tools Collection - ToolsHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f7ff;
+            color: var(--dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-title {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-description {
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .search-bar {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            border-left: 4px solid var(--accent);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tool-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .tool-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .tool-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .tool-description {
+            color: #666;
+            margin-bottom: 1rem;
+            min-height: 80px;
+        }
+
+        .tool-quote {
+            font-style: italic;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin: 1rem 0;
+            position: relative;
+            border-left: 3px solid var(--accent);
+        }
+
+        .tool-quote::before {
+            content: '"';
+            position: absolute;
+            left: 8px;
+            top: 5px;
+            font-size: 1.8rem;
+            color: var(--accent);
+            opacity: 0.3;
+        }
+
+        .tool-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="page-title">Checker Tools Collection</h1>
+            <p class="page-description">Verify, validate, and check various data types with our comprehensive collection of verification tools</p>
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Search checker tools...">
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="tools-grid">
+            <!-- SSL Checker -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="tool-name">SSL Checker</div>
+                </div>
+                <p class="tool-description">Comprehensive SSL certificate checker that verifies installation, expiration date, and certificate chain</p>
+                <div class="tool-quote">
+                    "Security is not a product, but a process." - Bruce Schneier
+                </div>
+                <div class="tool-actions">
+                    <a href="#" class="btn">Check Now</a>
+                </div>
+            </div>
+
+            <!-- Plagiarism Checker -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="tool-name">Plagiarism Checker</div>
+                </div>
+                <p class="tool-description">Detect duplicate content across the web with our advanced plagiarism detection system</p>
+                <div class="tool-quote">
+                    "Originality is undetected plagiarism." - William Ralph Inge
+                </div>
+                <div class="tool-actions">
+                    <a href="#" class="btn">Check Now</a>
+                </div>
+            </div>
+
+            <!-- SEO Checker -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="tool-name">SEO Checker</div>
+                </div>
+                <p class="tool-description">Full SEO audit tool that checks website health, metadata, and search engine optimization factors</p>
+                <div class="tool-quote">
+                    "SEO is not about tricking Google. It's about helping users." - Unknown
+                </div>
+                <div class="tool-actions">
+                    <a href="#" class="btn">Check Now</a>
+                </div>
+            </div>
+
+            <!-- Email Verifier -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="tool-name">Email Verifier</div>
+                </div>
+                <p class="tool-description">Verify email addresses in real-time with syntax check and domain validation</p>
+                <div class="tool-quote">
+                    "Communication works for those who work at it." - John Powell
+                </div>
+                <div class="tool-actions">
+                    <a href="#" class="btn">Check Now</a>
+                </div>
+            </div>
+
+            <!-- Website Uptime Checker -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="tool-name">Uptime Checker</div>
+                </div>
+                <p class="tool-description">Monitor website availability and response time from multiple global locations</p>
+                <div class="tool-quote">
+                    "Uptime is the best feature." - David Hassell
+                </div>
+                <div class="tool-actions">
+                    <a href="#" class="btn">Check Now</a>
+                </div>
+            </div>
+
+            <!-- Grammar Checker -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fas fa-spell-check"></i>
+                    </div>
+                    <div class="tool-name">Grammar Checker</div>
+                </div>
+                <p class="tool-description">Advanced grammar and spelling checker with style improvement suggestions</p>
+                <div class="tool-quote">
+                    "Grammar is the logic of speech, even as logic is the grammar of reason." - Richard Chenevix Trench
+                </div>
+                <div class="tool-actions">
+                    <a href="#" class="btn">Check Now</a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
