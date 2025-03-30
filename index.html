@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolsHub - Premium Online Tools Collection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-light: #4cc9f0;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --darker: #1a1e21;
+            --success: #4cc9f0;
+            --warning: #f72585;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7ff 0%, #e8ecff 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 3rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 Q50,80 0,100 Z"></path></svg>');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: bottom;
+            opacity: 0.3;
+        }
+        
+        .logo {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary-light);
+            border-radius: 3px;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+            font-weight: 300;
+        }
+        
+        .quote {
+            font-style: italic;
+            margin: 1rem auto;
+            padding: 0.8rem 1.5rem;
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            display: inline-block;
+            font-size: 0.95rem;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 80%;
+        }
+        
+        .search-container {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            padding-left: 3rem;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+        
+        .tool-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .tool-header {
+            background: white;
+            color: var(--dark);
+            padding: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .tool-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .tool-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .tool-description {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            color: #555;
+        }
+        
+        .tool-quote {
+            font-style: italic;
+            font-size: 0.9rem;
+            color: #666;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--accent);
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .tool-quote::before {
+            content: '"';
+            position: absolute;
+            font-size: 3rem;
+            color: var(--accent);
+            opacity: 0.1;
+            top: -10px;
+            left: 5px;
+            font-family: serif;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            margin-top: auto;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        .btn:hover {
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(67, 97, 238, 0.4);
+        }
+        
+        .btn i {
+            font-size: 0.9rem;
+        }
+        
+        .category-count {
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.05);
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+        }
+        
+        footer {
+            background: var(--darker);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .footer-quote {
+            font-style: italic;
+            margin: 1rem 0;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-link {
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            color: var(--primary-light);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Floating animation for header elements */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 2rem 0 3rem;
+            }
+            
+            .logo {
+                font-size: 2.2rem;
+            }
+            
+            .quote {
+                font-size: 0.85rem;
+                padding: 0.7rem 1.2rem;
+            }
+            
+            .search-container {
+                margin: 1.5rem auto 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+            }
+            
+            .tool-header {
+                padding: 1.2rem;
+            }
+            
+            .tool-body {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo floating">ToolsHub</h1>
+            <p class="tagline">Your premium destination for all essential online tools</p>
+            <p class="quote">"Productivity is never an accident. It is always the result of a commitment to excellence, intelligent planning, and focused effort." — Paul J. Meyer</p>
+            
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="Search for tools...">
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="tools-grid">
+            <!-- Checker Tools -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fas fa-check-double"></i>
+                    </div>
+                    <div>
+                        Checker Tools
+                        <span class="category-count">12 tools</span>
+                    </div>
+                </div>
+                <div class="tool-body">
+                    <p class="tool-description">A collection of great checker-type tools to help you check & verify different types of things with precision and reliability.</p>
+                    <p class="tool-quote">"Verification is the key to reliability in the digital world. Trust but verify."</p>
+                    <a href="#" class="btn">
+                        <i class="fas fa-arrow-right"></i>
+                        Explore Tools
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Text Tools -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <div>
+                        Text Tools
+                        <span class="category-count">18 tools</span>
+                    </div>
+                </div>
+                <div class="tool-body">
+                    <p class="tool-description">Powerful text content tools to create, modify & enhance your textual content with professional quality.</p>
+                    <p class="tool-quote">"Words are, of course, the most powerful drug used by mankind." — Rudyard Kipling</p>
+                    <a href="#" class="btn">
+                        <i class="fas fa-arrow-right"></i>
+                        Explore Tools
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Converter Tools -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div>
+                        Converter Tools
+                        <span class="category-count">24 tools</span>
+                    </div>
+                </div>
+                <div class="tool-body">
+                    <p class="tool-description">Effortlessly convert between formats with our comprehensive collection of data conversion utilities.</p>
+                    <p class="tool-quote">"In the right format, information transforms into actionable knowledge."</p>
+                    <a href="#" class="btn">
+                        <i class="fas fa-arrow-right"></i>
+                        Explore Tools
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Generator Tools -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <div>
+                        Generator Tools
+                        <span class="category-count">15 tools</span>
+                    </div>
+                </div>
+                <div class="tool-body">
+                    <p class="tool-description">Create content instantly with our powerful generators that produce high-quality, ready-to-use results.</p>
+                    <p class="tool-quote">"Creativity is intelligence having fun." — Albert Einstein</p>
+                    <a href="#" class="btn">
+                        <i class="fas fa-arrow-right"></i>
+                        Explore Tools
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Developer Tools -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div>
+                        Developer Tools
+                        <span class="category-count">22 tools</span>
+                    </div>
+                </div>
+                <div class="tool-body">
+                    <p class="tool-description">Essential utilities for developers to streamline workflows, debug code, and enhance productivity.</p>
+                    <p class="tool-quote">"First, solve the problem. Then, write the code." — John Johnson</p>
+                    <a href="#" class="btn">
+                        <i class="fas fa-arrow-right"></i>
+                        Explore Tools
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Image Tools -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <div>
+                        Image Tools
+                        <span class="category-count">14 tools</span>
+                    </div>
+                </div>
+                <div class="tool-body">
+                    <p class="tool-description">Edit, convert and optimize images without complex software using our browser-based solutions.</p>
+                    <p class="tool-quote">"A picture is worth a thousand words, but the right tools make it speak volumes."</p>
+                    <a href="#" class="btn">
+                        <i class="fas fa-arrow-right"></i>
+                        Explore Tools
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Unit Converter Tools -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <div>
+                        Unit Converters
+                        <span class="category-count">8 tools</span>
+                    </div>
+                </div>
+                <div class="tool-body">
+                    <p class="tool-description">Quickly convert between measurement units for cooking, construction, science and daily life.</p>
+                    <p class="tool-quote">"Measure twice, convert once. Precision matters in all things."</p>
+                    <a href="#" class="btn">
+                        <i class="fas fa-arrow-right"></i>
+                        Explore Tools
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Time Converter Tools -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        Time Tools
+                        <span class="category-count">6 tools</span>
+                    </div>
+                </div>
+                <div class="tool-body">
+                    <p class="tool-description">Time zone converters, date calculators and chronological utilities for global coordination.</p>
+                    <p class="tool-quote">"Time isn't the main thing. It's the only thing." — Miles Davis</p>
+                    <a href="#" class="btn">
+                        <i class="fas fa-arrow-right"></i>
+                        Explore Tools
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Data Converter Tools -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div>
+                        Data Tools
+                        <span class="category-count">9 tools</span>
+                    </div>
+                </div>
+                <div class="tool-body">
+                    <p class="tool-description">Convert between data formats, calculate storage needs and optimize your digital assets.</p>
+                    <p class="tool-quote">"Data is the new oil of the digital economy. Refine it well."</p>
+                    <a href="#" class="btn">
+                        <i class="fas fa-arrow-right"></i>
+                        Explore Tools
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Misc Tools -->
+            <div class="tool-card">
+                <div class="tool-header">
+                    <div class="tool-icon">
+                        <i class="fas fa-random"></i>
+                    </div>
+                    <div>
+                        Miscellaneous
+                        <span class="category-count">11 tools</span>
+                    </div>
+                </div>
+                <div class="tool-body">
+                    <p class="tool-description">Specialized utilities that don't fit elsewhere but provide unique value for specific needs.</p>
+                    <p class="tool-quote">"The right tool for the job isn't always in the main toolbox. Sometimes you need something special."</p>
+                    <a href="#" class="btn">
+                        <i class="fas fa-arrow-right"></i>
+                        Explore Tools
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-quote">
+                    "We shape our tools, and thereafter our tools shape us." — Marshall McLuhan
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-product-hunt"></i></a>
+                </div>
+                
+                <p class="copyright">© 2023 ToolsHub Premium. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
